@@ -1,0 +1,36 @@
+.colors {
+    color: #EB865E;
+    color: #8690EB;
+    color: #ABEB86;
+}
+
+
+.sign_in_box {
+    width: 500px;
+    height: 600px;
+    align-items: center;
+    border: 1px solid #EB865E;
+    border-radius: 20px;
+}
+.sign_in_type, .create_acc_type {
+    text-align: center;
+    padding: 20px;
+
+}
+
+.create_acc_btn, .sign_in_btn {
+    margin-top: 100px;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    color: #EB865E;
+    border: 2px solid #EB865E;
+    /* background-color: #EB865E; */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.create_acc_btn:hover, .sign_in_btn:hover {
+    color: black;
+    background-color: #EB865E;
+}

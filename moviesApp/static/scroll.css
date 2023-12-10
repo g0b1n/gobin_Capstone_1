@@ -1,0 +1,18 @@
+.horizontal-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scroll .card {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.cast-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Ensures that the flex items are in a single line */
+}
+
+.horizontal-scroll .d-flex {
+    flex-wrap: nowrap; /* Prevents flex items from wrapping */
+}

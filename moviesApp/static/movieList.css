@@ -1,0 +1,46 @@
+/* main colors */
+.colors {
+    color: #EB865E;
+    color: #8690EB;
+    color: #ABEB86;
+}
+
+
+.pipe {
+    color: #EB865E;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.featured_today, .top_10, .home_movies, .home_tvshows, .home_series, .movies_list, .home_from_watchlist {
+    /* margin-left: 5px; */
+    max-height: 300px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.featured_today .featured_mvi {
+    min-width: 200px;
+    height: 300px;
+    line-height: 250px;
+    text-align: center;
+    background: #8690EB;
+    margin: 5px;
+}
+
+.featured_today .featured_mvi img {
+    width: 200px;
+    /* height: 250px; */
+}
+
+.featured_today .featured_mvi p {
+    color: #8690EB;
+}
+.top_10 .top10_mvi, .home_movies .home_pg_mvi,  .home_tvshows .home_pg_tvshows, .home_series .home_pg_series, .movies_list .movie_pg_list, .home_from_watchlist .movies_from_watch_list  {
+    min-width: 200px;
+    height: 250px;
+    line-height: 250px;
+    text-align: center;
+    background: #8690EB;
+    margin: 5px;
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}myMvi{% endblock %}
+{% block content %}
+
+<div class="container">
+    {% if person_details %}
+    <div class="card text-white bg-primary mb-3" style="max-width: 1500px">
+        <div class="card-body">
+            <div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        {% if person_details.profile_path %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ person_details.profile_path }}" class="img-fluid mt-2" alt="{{ person_details.name }}">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='/images/poster_not_found.jpg') }}" class="card-img-top" alt="Default Poster">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-title">
+                            <h2>{{ person_details.name }}</h2>
+                            <p class="card-subtitle text-muted mr-2" style="display:inline"><b>Birthday:</b> {{ person_details.birthday }} </p>
+                            <p class="card-subtitle text-muted ml-2" style="display:inline"><b>Place of Birth:</b> {{ person_details.place_of_birth }} </p>
+                        </div>
+                        <h4>Biography</h4>
+
+                        <p style="display:inline" id="person-bio" class="h6 person-bio">{{ person_details.biography|truncate}}</p>
+                        <a style="display:inline" onclick="toggleReadMore()" class="text-success"><b>Read more</b></a>
+                        
+                        <div class="cast-container">
+                            {% if person_known_for %}
+                            <h5 class="text-white mt-3">Known for</h5>
+                            <div>
+                                <div class="horizontal-scroll">
+                                    <div class="d-flex flex-row overflow-auto">
+                                        {% for movie in person_known_for['cast'] %}
+                                        <div class="p-1">
+                                            <div class="card" style="width: 6rem;">
+                                                {% if movie.poster_path %}
+                                                <a href="{{ url_for('movie_details', movie_id=movie.id) }}"><img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" class="card-img-top" alt="{{movie.title}}"></a>
+                                                {% else %}
+                                                <img src="{{ url_for('static', filename='/images/poster_not_found.jpg') }}" class="card-img-top" alt="Default Poster">
+                                                {% endif %}
+                                                <!-- <p class="card-title m-2 cast_name">{{ movie.title }}</p> -->
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+
+<!-- <h2 class="text-dark"><span class="pipe">{{person_details.name}}</span> </h2> -->
+{% endblock %}

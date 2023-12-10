@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}myMvi{% endblock %}
+{% block content %}
+
+<!-- Movies  -->
+<div class="container mt-4">
+    {% if trending_items %}
+    <h2 class="text-white"><span class="pipe">|</span> Today's Movies</h2>
+        <div class="horizontal-scroll">
+            <div class="d-flex flex-row">
+
+                {% for item in trending_items %}
+                    <div class="p-1">
+                        <div class="card" style="width: 11rem;">
+                            <a href="{{ url_for('movie_details', movie_id=item.id) }}"><img src="https://image.tmdb.org/t/p/w500{{ item.poster_path or item.backdrop_path }}"
+                                class="card-img-top" alt="{{ item.title or item.name }}"></a>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    {% elif error %}
+        <div class="alert alert-warning" role="alert">
+            {{ error }}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No trending items to display.
+        </div>
+    {% endif %}
+</div>
+
+<!-- Tv shows  -->
+<!-- <div class="container mt-4">
+    {% if trending_tv %}
+    <h2 class="text-white"><span class="pipe">|</span> TV Shows</h2>
+        <div class="horizontal-scroll">
+            <div class="d-flex flex-row">
+                {% for item in trending_tv %}
+                    <div class="p-1">
+                        <div class="card" style="width: 11rem;">
+                            <img src="https://image.tmdb.org/t/p/w500{{ item.poster_path or item.backdrop_path }}" class="card-img-top" alt="{{ item.title or item.name }}">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% elif error %}
+        <div class="alert alert-warning" role="alert">
+            {{ error }}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No trending items to display.
+        </div>
+    {% endif %}
+</div> -->
+
+<!-- Celebrities  -->
+<div class="container mt-4">
+    {% if trending_person %}
+    <h2 class="text-white"><span class="pipe">|</span> Trending Peoples</h2>
+        <div class="horizontal-scroll">
+            <div class="d-flex flex-row">
+                {% for item in trending_person %}
+                    <div class="p-1">
+                        <div class="card" style="width: 11rem;">
+                            <a href="{{ url_for('show_person_details', person_id=item.id) }}"><img src="https://image.tmdb.org/t/p/w500{{ item.profile_path }}" class="card-img-top cast_img" alt="{{ item.title or item.name }}"></a>
+                            <h5 class="card-title m-2 cast_name">{{ item.name }}</h5>
+                        </div>
+                        <!-- https://api.themoviedb.org/3/trending/person -->
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% elif error %}
+        <div class="alert alert-warning" role="alert">
+            {{ error }}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No trending items to display.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

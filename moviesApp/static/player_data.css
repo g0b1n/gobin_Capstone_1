@@ -1,0 +1,76 @@
+.colors {
+    color: #1d4b63;
+    color: #5e5e5e;
+    color: #2b2b2b;
+    color: #ffffff;
+    color: #4ac0ff;
+    color: #1b1d1f;
+    color: #bdc1c6;
+    color: #3c4043;
+}
+
+#player_data {
+    margin: 40px;
+    color: white;
+}
+
+.player_card {
+    width: 50%;
+    background: #1b1d1f;
+    color: #ffffff;
+    margin: 100px auto 0;
+    margin-top: 5px;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player_img {
+    border-radius: 50%;
+    width: 90px;
+    height: 100px;
+}
+
+.club_crest {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.player_bio {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.height_num, .shirt_num, .year, .country_name, .position_which, .foot_side{
+    font-size: 20px;
+    margin-top: -6px;
+    text-align: center;
+}
+
+.height, .shirt, .dob, .foot, .country, .position {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+    color: #4ac0ff;
+}
+
+.player_profile {
+    color: #4ac0ff;
+}
+
+.player_profile .player_img {
+    display: flex;
+    position: relative;
+}
+.player_profile div {
+    display: flex;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: -50px;
+
+}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Create Account{% endblock %}
+{% block content %}
+
+<div class="container bg-primary py-5 px-5">
+    <p class="lead text-white">Write your reviews below</p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+    {% for field in form
+        if field.widget.input_type != 'hidden' %}
+    <p>
+        {{ field.label(class_="text-white text-size") }}
+        {{ field(class_="form-control") }}
+
+        {% for error in field.errors %}
+        <span class="form-text text-danger">{{ error }}</span>
+        {% endfor %}
+    </p>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success px-4 mr-1">Post</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+.body-bg {
+    /* background-color: #eceaff; */
+    background-color: #222222;
+}
+
+.colors {
+    color: #1d4b63;
+    color: #5e5e5e;
+    color: #2b2b2b;
+    color: #ffffff;
+    color: #4ac0ff;
+    color: #1b1d1f;
+    color: #bdc1c6;
+    color: #3c4043;
+    
+    /* main colors */
+    color: #EB865E;
+    color: #8690EB;
+    color: #ABEB86;
+}
+
+*{
+    /* background: #2b2b2b; */
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#top-navbar {
+    background-color: #1b1d1f;
+    height: 25px;
+}
+body {
+    background: #000000;
+    /* background: #3c4043; */
+}
+
+.logo{
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: #EB865E;
+    color: #1b1d1f;
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    /* border-style: solid; */
+}
+
+li, a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+header {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between; 
+    /* it will send 1st and last items to the far left and far right and wil place the middle items in the middle with equall amount of sapace in-between */
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.search_bar {
+    width: 400px;
+    height: 40px;
+    /* display: inline-block; */
+    background: #3c4043;
+    color: #EB865E;
+    border-radius: 20px;
+    margin-right: 10px;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #EB865E;
+}
+
+.search_bar::placeholder {
+    color: #5e5e5e;
+}
+
+.search_btn {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background: #1b1d1f;
+    border: 1px solid #EB865E;
+    color: #EB865E;
+}
+
+.search_btn:hover {
+    color: #2b2b2b;
+    background: #EB865E;
+    font-weight: bold;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+/* inline block to make them appear side by side rather than on top of eachother */
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: #EB865E;
+}
+
+#content {
+    margin: 40px;
+    color: white;
+}
+
+.cast_name {
+    font-size: 16px;
+    overflow: auto;
+}
+
+.cast_img {
+    width: 200px;
+    height: auto;
+}
+
+.person-bio {
+    max-height: 100px; /* Set the maximum height of the content */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Add a smooth transition effect */
+}
+
+.person-bio.expanded {
+    max-height: none; /* Allow the content to expand to its full height */
+}
+
+
+.text-size {
+    font-size: 40px;
+}

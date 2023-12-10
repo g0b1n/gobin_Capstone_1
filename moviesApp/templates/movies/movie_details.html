@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}myMvi - {{movie.title}}{% endblock %}
+{% block content %}
+
+<div class="container">
+    {% if movie %}
+    <div class="card text-white bg-primary mb-3" style="max-width: 1500px">
+        <div class="card-body">
+            
+        <div class="row">
+            <div class="col-md-4">
+                {% if movie.poster_path %}
+                <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path or movie.backdrop_path }}"
+                class="img-fluid mt-2" alt="{{ movie.title or movie.name }}">
+                {% else %}
+                <a href="{{ url_for('movie_details', movie_id=movie.id) }}"><img src="{{ url_for('static', filename='/images/poster_not_found.jpg') }}" class="card-img-top" alt="Default Poster"></a>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-title">
+                    <h2>{{ movie.title }}
+
+                        <button class="btn btn-md btn-success">{{ movie.vote_average|round(2) }}</button>
+                        <button id="toggleButton" class="btn btn-md btn-outline-success" onclick="addToFavorites('{{ movie.id }}')"><i id="toggleIcon" class="fa-solid fa-heart"></i> </button>
+
+                    </h2>
+                </div>
+                    <p class="card-subtitle text-muted mr-1" style="display:inline">{{ movie.release_date }}</p>
+                    <p class="card-subtitle text-muted ml-1" style="display:inline">{{ movie.runtime }} mins</p>
+                <h4 class="my-2">Overview</h4>
+                <p class="h6">{{ movie.overview }}</p>
+                <p><strong>Director:</strong> {{ movie.director }}</p>
+                <p><strong>Genres:</strong> 
+                    {% for genre in movie.genres %}
+                        <button class="btn btn-sm btn-success"> {{ genre.name }} </button>
+                    {% endfor %}
+                </p>
+            
+                <!-- Movie cast -->
+                <div class="cast-container">
+                    {% if movie_cast %}
+                        <h4 class="text-white">Cast</h4>
+                            <div class="horizontal-scroll">
+                                <div class="d-flex flex-row overflow-auto"> 
+                                    {% for cast in movie_cast %}
+                                    <div class="p-1">
+                                        <div class="card mx-2" style="width: 6rem; height: auto;">
+                                            {% if cast.profile_path %}
+                                            <a href="{{ url_for('show_person_details', person_id=cast.id) }}"><img src="https://image.tmdb.org/t/p/w500{{ cast.profile_path }}" class="card-img-top" alt="{{cast.title}}"></a>
+                                            {% else %}
+                                            <a href="{{ url_for('movie_details', movie_id=movie.id) }}"><img src="{{ url_for('static', filename='/images/poster_not_found.jpg') }}" class="card-img-top" alt="Default Poster"></a>
+                                            {% endif %}
+                                        </div>
+                                        <p class="text-white pl-1 pt-1">{{cast.name}}</p>
+                                    </div>
+                                    {% endfor %}
+                                 </div>
+                            </div>
+                            {% elif error %}
+                            <div class="alert alert-warning" role="alert">
+                                {{ error }}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info" role="alert">
+                                No trending items to display.
+                            </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+        </div>
+        <!-- Reviews -->
+        
+        
+        <!-- <div class="container">
+            <h4>Reviews</h4>
+            <div class="card bg-secondary">
+                
+            </div>
+            
+        </div> -->
+        {% if reviews %}
+        <div class="container bg-primary py-5 px-5">
+            <p class="lead text-white">Write your reviews below</p>
+        
+            <form method="POST">
+                {{ form.hidden_tag() }}
+        
+            {% for field in form
+                if field.widget.input_type != 'hidden' %}
+            <p>
+                {{ field.label(class_="text-white text-size") }}
+                {{ field(class_="form-control") }}
+        
+                {% for error in field.errors %}
+                <span class="form-text text-danger">{{ error }}</span>
+                {% endfor %}
+            </p>
+            {% endfor %}
+        
+            <button type="submit" class="btn btn-success px-4 mr-1">Post</button>
+            </form>
+        </div>
+        {% endif %}
+        
+        
+
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Movie details not available.
+        </div>
+        </div>
+    </div>
+    
+    {% endif %}
+</div>
+
+{% endblock %}
